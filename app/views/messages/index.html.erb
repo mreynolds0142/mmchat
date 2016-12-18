@@ -1,0 +1,18 @@
+<%= link_to "Home", root_path %>
+
+<table>
+  <tr>
+    <th>Sender</th>
+    <th>Receiver</th>
+    <th>Create Date</th>
+  </tr>
+
+  <% @messages.each do |message| %>
+    <tr>
+      <td><%= message.sender %></td>
+      <td><%= message.receiver %></td>
+      <td><%= message.created_at %></td>
+    </tr>
+  
+  <% end %>
+</table>
