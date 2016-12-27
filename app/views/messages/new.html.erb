@@ -1,0 +1,7 @@
+<h1>Enter Your Message</h1>
+
+<%= simple_form_for @message do |f| %>
+    <%= f.association :receiver, collection: User.where("id <> ?",current_user.id), label_method: :email %>
+    <%= f.input :body, as: :text %>
+    <%= f.button :submit %>
+<% end %>
