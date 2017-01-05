@@ -48,4 +48,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'sprockets', '2.11.0'
 
+group :development, :test do
+  gem 'byebug'
+  gem 'rspec-rails', '~> 3.5'
+end
 
