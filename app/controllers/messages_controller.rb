@@ -1,6 +1,10 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
   def index
-    @messages = Message.all
+    # only see messages I sent or messages to messages
+    @messages = Message.where("receiver_user_id = ? OR sender_user_id = ?", 
+      current_user.id, current_user.id).order("created_at asc")
+
   end
 
   def new
@@ -8,8 +12,16 @@ class MessagesController < ApplicationController
   end
 
   def create
-    Message.create(message_params)
-    redirect_to messages_path
+    @message = Message.new(message_params)
+    if @message.save
+      redirect_to messages_path
+    else
+      render :new
+    end
+  end
+
+  def show
+    @messages = Message.all
   end
 
   private

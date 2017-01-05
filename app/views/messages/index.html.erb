@@ -1,21 +1,49 @@
-<%= link_to "Home", root_path %>
-<%= link_to "New Message", new_message_path %>
+<!-- # if message is a sent message, display on right hand side of screen
+if message is a received message, display on left hand side of screen
+messages to be wrapped in color
+messages to be in date order
+ -->
 
-<table class="table table-condensed">
-  <tr>
-    <th>Sender</th>
-    <th>Receiver</th>
-    <th>Create Date</th>
-    <th>Message Body</th>
-  </tr>
 
   <% @messages.each do |message| %>
-    <tr>
-      <td><%= message.sender_user_id %></td>
-      <td><%= message.receiver_user_id %></td>
-      <td><%= message.created_at.strftime("%b %d %y") %></td>
-      <td><%= message.body %></td>
-    </tr>
+    
+    <% if message.sender_user_id == current_user.id %>
+      <div class="row">
+        <div class="col-xs-4 col-xs-offset-8">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <div class="panel-title">
+                To: <%= message.receiver.email %> 
+              <br>
+               <%= message.created_at.strftime("%b %d, %Y at %I:%M %p") %>
+              <br>
+                <div class="panel-body text-right">
+                  <%= message.body %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="row">
+        <div class="col-xs-4 panel">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="panel-title">
+                From: <%= message.sender.email %>
+              <br>
+                <%= message.created_at.strftime("%b %d, %Y at %I:%M %p") %>
+              <br>
+                <div class="panel-body text-right">
+                  <%= message.body %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  
   
   <% end %>
-</table>

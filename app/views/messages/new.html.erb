@@ -1,7 +1,12 @@
-<h1>Enter Your Message</h1>
+<div class= "booyah-box col-xs-10 col-xs-offset-1">  
+  <h1>Enter Your Message</h1>
 
-<%= simple_form_for @message do |f| %>
+  <%= simple_form_for @message do |f| %>
+    <%= f.hidden_field :sender_user_id, value: current_user.id %>
     <%= f.association :receiver, collection: User.where("id <> ?",current_user.id), label_method: :email %>
+    <br />
     <%= f.input :body, as: :text %>
+    <br />
     <%= f.button :submit %>
-<% end %>
+  <% end %>
+</div>
