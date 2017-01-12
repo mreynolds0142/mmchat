@@ -4,4 +4,9 @@ class Message < ActiveRecord::Base
 
   validates :receiver_user_id, presence: true
   validates :sender_user_id, presence: true
+
+
+  #put method for messages conversation
 end
+
+
