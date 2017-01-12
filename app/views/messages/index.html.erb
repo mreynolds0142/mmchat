@@ -2,48 +2,58 @@
 if message is a received message, display on left hand side of screen
 messages to be wrapped in color
 messages to be in date order
- -->
+-->
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="messsage" class="col-sm-2 control-label">Message</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="messsage" placeholder="">
+    </div>
+    <div class="col-sm-2">
+      <a href="javascript:void(0)" class="btn btn-success">Send</a>
+    </div>
+  </div>
+</form>
 
+<% @messages.each do |message| %>
 
-  <% @messages.each do |message| %>
-    
-    <% if message.sender_user_id == current_user.id %>
-      <div class="row">
-        <div class="col-xs-4 col-xs-offset-8">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <div class="panel-title">
-                To: <%= message.receiver.email %> 
-              <br>
-               <%= message.created_at.strftime("%b %d, %Y at %I:%M %p") %>
-              <br>
-                <div class="panel-body text-right">
-                  <%= message.body %>
-                </div>
+  <% if message.sender_user_id == current_user.id %>
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-8">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <div class="panel-title">
+              To: <%= message.receiver.email %>
+            <br>
+             <%= message.created_at.strftime("%b %d, %Y at %I:%M %p") %>
+            <br>
+              <div class="panel-body text-right">
+                <%= message.body %>
               </div>
             </div>
           </div>
         </div>
       </div>
-    <% else %>
-      <div class="row">
-        <div class="col-xs-4 panel">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <div class="panel-title">
-                From: <%= message.sender.email %>
-              <br>
-                <%= message.created_at.strftime("%b %d, %Y at %I:%M %p") %>
-              <br>
-                <div class="panel-body text-right">
-                  <%= message.body %>
-                </div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col-xs-4 panel">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="panel-title">
+              From: <%= message.sender.email %>
+            <br>
+              <%= message.created_at.strftime("%b %d, %Y at %I:%M %p") %>
+            <br>
+              <div class="panel-body text-right">
+                <%= message.body %>
               </div>
             </div>
           </div>
         </div>
       </div>
-    <% end %>
-  
-  
+    </div>
   <% end %>
+
+
+<% end %>
