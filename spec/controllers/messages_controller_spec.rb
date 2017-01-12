@@ -9,7 +9,7 @@ describe MessagesController do
       sign_in sender
     end
 
-    it 'adds a message to the database' do
+    it 'routes correctly' do
       post :create, message: {
         "sender_user_id"=> sender.id,
         "receiver_user_id"=> receiver.id,
@@ -17,6 +17,16 @@ describe MessagesController do
       }
       expect(response).to have_http_status(:redirect)
       expect(response).to redirect_to("/messages")
+    end
+
+    it 'adds a message to the database' do
+      expect{ 
+        post :create, message: {
+          "sender_user_id"=> sender.id,
+          "receiver_user_id"=> receiver.id,
+          "body"=>"Hello"
+        }
+      }.to change{Message.count}.by(1)
     end
   end
 end
