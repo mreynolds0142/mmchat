@@ -12,6 +12,8 @@ class MessagesController < ApplicationController
   end
 
   def create
+    # if have conversation id in params, use this to set conversation id on new message
+    # else make new conversation
     @message = Message.new(message_params)
     if @message.save
       redirect_to messages_path

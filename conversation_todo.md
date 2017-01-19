@@ -6,12 +6,28 @@ every message starts or continues a conversation
   continue conversation if sender has talked to receiver
   When create a new message check to see if this sender has talked (sent or rec'vd message) to this receiver
 
-Create method for:
-  Message.where(sender_user_id =sender_user_id) and receiver = receiver and sender=receiver or receiver = sender
 
-No model - just Conversation controller
+  Conversation controller
   login - call /Conversations
-  screen to list sender/receiver pairs (list of names)
-  click on that pair - returns all messages in that conversation
+  index with conversation.all
 
 conversations route and conversations/:otherside_user_id
+
+  Conversation Model
+  has many messages
+
+  MEssages Model
+  need migration to add conversation id to messages tables
+  belongs to a conversation
+
+  Update create message to either add to existing conversation or create brand new conversation
+
+  UI
+    list of conversations
+    link to create new conversation
+  New conversation screen = new messasge screen
+  Edit conversation screen = display list of messages with a form to add a new message
+    conversation/edit/4
+      conv controller edit method
+      retrieve conversation using id  @conversation
+      retreive all messages for conversations  @conversations.messages
