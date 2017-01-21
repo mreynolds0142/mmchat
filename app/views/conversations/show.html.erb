@@ -1,0 +1,1 @@
+<%= collection_select(:message_receiver, :receiver_id, User.where("id <> ?",current_user.id), :id, :email, prompt: true) %>
