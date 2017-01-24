@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170119053319) do
+ActiveRecord::Schema.define(version: 20170124010614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20170119053319) do
   create_table "conversations", force: true do |t|
     t.integer  "receiver_user_id"
     t.integer  "sender_user_id"
-    t.integer  "message_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

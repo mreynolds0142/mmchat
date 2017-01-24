@@ -14,11 +14,16 @@ class MessagesController < ApplicationController
   def create
     # if have conversation id in params, use this to set conversation id on new message
     # else make new conversation
-    @message = Message.new(message_params)
-    if @message.save
-      redirect_to messages_path
+    if message_params[:conversation_id].present?
+      @message = Message.find(params[:conversation_id])
     else
-      render :new
+      @message = Message.new
+
+        if @message.save
+          redirect_to messages_path
+        else
+          render :new
+        end
     end
   end
 

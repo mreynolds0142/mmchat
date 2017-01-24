@@ -1,0 +1,12 @@
+<h1>Conversation Page</h1>
+<br/> <br/>
+<div class="booyah-box col-sm-8 col-sm-offset-2">
+  <% @users = User.all %>  <%# don't show current user %>
+    <%# <% @users = User.where ('id <> ?', current_user.id) %>
+  <% @users.each do |user| %>
+    <div class= "row">
+      <%= user.email %>
+    </div>
+   <br/>
+  <% end %>
+ </div>
