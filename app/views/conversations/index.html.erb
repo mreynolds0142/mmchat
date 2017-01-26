@@ -1,11 +1,11 @@
 <h1>Conversation Page</h1>
+
+<%= link_to "New Message", new_message_path %>
 <br/> <br/>
 <div class="booyah-box col-sm-8 col-sm-offset-2">
-  <% @users = User.all %>  <%# don't show current user %>
-    <%# <% @users = User.where ('id <> ?', current_user.id) %>
-  <% @users.each do |user| %>
-    <div class= "row">
-      <%= user.email %>
+  <% @conversations.each do |conversation| %>
+     <div class= "row">
+      <%= link_to conversation.label(current_user.id), conversation %>
     </div>
    <br/>
   <% end %>
