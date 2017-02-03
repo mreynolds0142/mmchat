@@ -24,7 +24,11 @@ class MessagesController < ApplicationController
     end
 
     if @message.save
-      redirect_to messages_path
+      respond_to do |format|
+        format.html {redirect_to messages_path}
+        format.json {render partial: "messages/display", locals: {message: @message}}
+      end
+
     else
       render :new
     end
