@@ -1,5 +1,3 @@
 <%= render partial: "messages/form", locals:{conversation: @conversation} %>
 
-<% @conversation.messages.each do |message| %>
-   <%= render partial: "messages/display", locals:{message: message} %>
-<% end %>
+<%= render partial: "list", locals:{messages: @conversation.messages} %>

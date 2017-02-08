@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
   def index
     # only see messages I sent or messages to messages
-    @messages = Message.where("receiver_user_id = ? OR sender_user_id = ?", 
+    @messages = Message.where("receiver_user_id = ? OR sender_user_id = ?",
       current_user.id, current_user.id).order("created_at asc")
 
   end
@@ -26,9 +26,14 @@ class MessagesController < ApplicationController
     if @message.save
       respond_to do |format|
         format.html {redirect_to messages_path}
-        format.json {render partial: "messages/display", locals: {message: @message}}
+        format.json {
+          json_content = render_to_string partial: "messages/display.html.erb", locals: {message: @message}, layout: false
+          render json: {
+            content: json_content,
+            status: :ok
+          }
+        }
       end
-
     else
       render :new
     end
