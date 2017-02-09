@@ -1,11 +1,3 @@
-<!-- # if message is a sent message, display on right hand side of screen
-if message is a received message, display on left hand side of screen
-messages to be wrapped in color
-messages to be in date order
--->
-
 <%= render partial: "form", locals:{conversation: nil} %>
 
-<% @messages.each do |message| %>
-  <%= render partial: "display", locals:{message: message} %>
-<% end %>
+<%= render partial: "list", locals:{messages: @messages} %>

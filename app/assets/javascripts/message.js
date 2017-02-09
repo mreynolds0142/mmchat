@@ -20,14 +20,21 @@ $(function(){
     $.ajax({
       url: "/messages",
       data: postData,
-      type: "post", 
+      type: "post",
       dataType: "json",
       // contentType: "application/json",
       success: function(data){
         console.log("data: ", data);
+        // Handle the response here
+        // 1. Use a selector to find your list of messages.
+        //    Hint: All of the messages are in an unorderd list (ul).
+        //    So you can get the list of messages by selecting the list $('ul#js-message-list')
+        // 2. Add a message to the list. The response from the controller looks like this:
+        //   <li>...message content...</li>
+        //   You want to "append" this content to the your ul list. Google search jQuery append for how to do this
       },
       fail: function() {
-        alert( "error" ); 
+        alert( "error" );
       }
 
     })
