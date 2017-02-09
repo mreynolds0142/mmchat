@@ -1,10 +1,7 @@
 // We want to be able to add a new message and have it update the screen right away
 
-$(function(){
-  console.log("loaded messages");
-
-
-  $("#send-message").click(function(){
+var Message = {
+  submit: function(){
     console.log("Send was clicked");
 
     var senderUserId = $("#sender_user_id").val();
@@ -29,6 +26,7 @@ $(function(){
         // 1. Use a selector to find your list of messages.
         //    Hint: All of the messages are in an unorderd list (ul).
         //    So you can get the list of messages by selecting the list $('ul#js-message-list')
+        $("ul#js-message-list").append(data);
         // 2. Add a message to the list. The response from the controller looks like this:
         //   <li>...message content...</li>
         //   You want to "append" this content to the your ul list. Google search jQuery append for how to do this
@@ -37,6 +35,20 @@ $(function(){
         alert( "error" );
       }
 
-    })
+    }) 
+  }
+}
+
+$(function(){
+  console.log("loaded messages");
+
+  $("form").keypress(function(e){
+    if(e.which == 13) {
+      Message.submit();
+      return false;
+    }
+  })
+  $("#send-message").click(function(){
+    Message.submit();
   });
 });
