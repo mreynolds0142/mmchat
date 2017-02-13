@@ -29,6 +29,8 @@ var Message = {
         //    Hint: All of the messages are in an unorderd list (ul).
         //    So you can get the list of messages by selecting the list $('ul#js-message-list')
         $("ul#js-message-list").append(data.content);
+        $('.form-control').val('');
+        //$("message").val('');
         // 2. Add a message to the list. The response from the controller looks like this:
         //   <li>...message content...</li>
         //   You want to "append" this content to the your ul list. Google search jQuery append for how to do this
@@ -41,7 +43,7 @@ var Message = {
   }
 }
 
-$(function(){
+$(document).on('turbolinks:load',function(){
   console.log("loaded messages");
 
   $("form").keypress(function(e){
