@@ -2,13 +2,15 @@
   <%= hidden_field_tag :sender_user_id, current_user.id %>
 
   <% if conversation %>
-    <input type="hidden" value=<%= conversation.id %>>
-  <% end %>
-  <div class="form-group ">
-    <div class="col-sm-8 col-sm-offset-2">
-      <%= collection_select(:message_receiver, :receiver_id, User.where("id <> ?",current_user.id), :id, :email, prompt: true) %>
+    <%= hidden_field_tag :conversation_id, conversation.id %>
+    <%= hidden_field_tag :message_receiver_receiver_id, conversation.receiver_user_id %>
+  <% else %>
+    <div class="form-group ">
+      <div class="col-sm-8 col-sm-offset-2">
+        <%= collection_select(:message_receiver, :receiver_id, User.where("id <> ?",current_user.id), :id, :email, prompt: true) %>
+      </div>
     </div>
-  </div>
+  <% end %>
   <div class="form-group">
     <label for="messsage" class="col-sm-2 control-label">Message</label>
     <div class="col-sm-8">

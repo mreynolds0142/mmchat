@@ -6,12 +6,14 @@ var Message = {
 
     var senderUserId = $("#sender_user_id").val();
     var receiverUserId = $("#message_receiver_receiver_id").val();
+    var conversationId = $("#conversation_id").val();
 
     var messageBody = $("#messsage-body").val();
     var postData = {"message":{
       "sender_user_id": senderUserId,
       "receiver_user_id": receiverUserId,
-      "body": messageBody
+      "body": messageBody,
+      "conversation_id": conversationId
     }};
     console.log("postData: ", postData);
     $.ajax({
@@ -26,7 +28,7 @@ var Message = {
         // 1. Use a selector to find your list of messages.
         //    Hint: All of the messages are in an unorderd list (ul).
         //    So you can get the list of messages by selecting the list $('ul#js-message-list')
-        $("ul#js-message-list").append(data);
+        $("ul#js-message-list").append(data.content);
         // 2. Add a message to the list. The response from the controller looks like this:
         //   <li>...message content...</li>
         //   You want to "append" this content to the your ul list. Google search jQuery append for how to do this
