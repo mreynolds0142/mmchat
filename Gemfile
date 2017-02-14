@@ -54,4 +54,8 @@ group :development, :test do
   gem 'quiet_assets'
 end
 
+# This is not working with Turbolinks 5
 gem 'jquery-turbolinks'
+
+gem 'local_time'
+

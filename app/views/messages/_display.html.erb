@@ -7,7 +7,7 @@
             <div class="panel-title">
               To: <%= message.receiver.email %>
             <br>
-             <%= message.created_at.strftime("%b %d, %Y at %I:%M %p") %>
+             <%= local_time(message.created_at.strftime("%b %d, %Y at %I:%M %p")) %>
             <br>
               <div class="panel-body text-right">
                 <%= message.body %>
@@ -25,7 +25,7 @@
             <div class="panel-title">
               From: <%= message.sender.email %>
             <br>
-              <%= message.created_at.strftime("%b %d, %Y at %I:%M %p") %>
+              <%= local_time(message.created_at.strftime("%b %d, %Y at %I:%M %p")) %>
             <br>
               <div class="panel-body text-right">
                 <%= message.body %>

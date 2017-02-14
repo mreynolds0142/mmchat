@@ -1,5 +1,5 @@
 <ul id="js-message-list" style="list-style-type: none;">
   <% messages.each do |message| %>
-      <%= render partial: "display", locals:{message: message} %>
+      <%= render partial: "messages/display", locals:{message: message} %>
   <% end %>
 </ul>

@@ -64,6 +64,8 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (1.8.3)
+    local_time (1.0.3)
+      coffee-rails
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
     mime-types (3.1)
@@ -166,6 +168,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
+  local_time
   pg
   quiet_assets
   rails (= 4.1.9)
