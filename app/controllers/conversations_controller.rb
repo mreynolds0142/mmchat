@@ -9,5 +9,9 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.find(params[:id])
   end
 
+  def new
+    @conversation = Conversation.new
+  end
+
 
 end

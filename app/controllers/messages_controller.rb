@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   def index
     # only see messages I sent or messages to messages
     @messages = Message.where("receiver_user_id = ? OR sender_user_id = ?",
-      current_user.id, current_user.id).order("created_at asc")
+      current_user.id, current_user.id).order("created_at desc")
 
   end
 
