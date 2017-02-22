@@ -2,6 +2,8 @@ class Conversation < ActiveRecord::Base
 
   has_many :users
   has_many :messages
+  
+
 
   def label(user_id)
     # if the user_id matches sender_user_id

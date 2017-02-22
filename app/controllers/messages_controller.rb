@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
 
     if @message.save
       respond_to do |format|
-        format.html {redirect_to messages_path}
+        format.html {redirect_to conversation_path(@conversation)}
         format.json {
           json_content = render_to_string partial: "messages/display.html.erb", locals: {message: @message}, layout: false
           render json: {

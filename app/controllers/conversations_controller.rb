@@ -2,7 +2,7 @@ class ConversationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @conversations = Conversation.all
+    @conversations = Conversation.order("created_at desc").all
   end
 
   def show
@@ -12,6 +12,9 @@ class ConversationsController < ApplicationController
   def new
     @conversation = Conversation.new
   end
+
+private
+
 
 
 end
